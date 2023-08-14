@@ -4,6 +4,13 @@ document.getElementById('withdraw-btn').addEventListener('click', function(){
    const withdrawString = withdrawField.value;
    const newWithdrawAmount = parseFloat(withdrawString);
 
+   withdrawField.value = '';
+   
+   if(isNaN(newWithdrawAmount)){
+      alert('please provide a number')
+      return;
+   }
+
    const withdrawTotalElement = document.getElementById('withdraw-f');
    const previousWithdrawString = withdrawTotalElement.innerText;
    const previousWithdrawTotal = parseFloat(previousWithdrawString);
@@ -14,8 +21,8 @@ document.getElementById('withdraw-btn').addEventListener('click', function(){
    const previouBalanceTotalString = balanceTotalElement.innerText;
    const previouBalanceTotal = parseFloat(previouBalanceTotalString);
 
-   withdrawField.value = '';
-   
+
+
    if(newWithdrawAmount > previouBalanceTotal){
       return alert('Not available this amount of money on you account')
     }
